@@ -1,0 +1,53 @@
+
+= CSVobj
+
+== Aims
+
+CSVobj has two simple aims in the processing of CSV files:
+
+* clarity
+* robustness
+
+It achieves these aims by automatically instantiating a class with
+dynamic attributes that can be used to refer to each column of the CSV
+by name. Each attribute name is derived in a predictable fashion from
+the column headers (the first row of the CSV).
+
+=== Clarity
+
+Rather than referring programatically to the "third element of the row"
+("row[2]") one can simply say "row.last_name".
+
+=== Robustness
+
+Any change to the CSV format (eg by inserting a new column between two
+existing columns) will not require a program change: you do not need to
+hunt down all references to "row[2]" and make them "row[3]"; they remain
+"row.last_name".
+
+== Example
+
+Given the following CSV file:
+
+    First Name,Last Name
+    Cheryl,James
+    Sandra,Denton
+    Deidra,Roper
+
+we can extract just the last names as follows:
+
+    # Get the gem
+    require 'rubygems'
+    require 'csvobj'
+
+    # Subclass because #parse defines methods on the class
+    class MyCsv < CSVobj ; end
+    
+    # First command line argument is CSV file to read
+    csv_file = File.new( ARGV[0] )
+
+    # Parse the file, print the "last name" column of each row
+    MyCsv.parse(csv_file).each do |row|
+      puts row.last_name
+    end
+
