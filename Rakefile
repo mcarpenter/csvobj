@@ -1,7 +1,8 @@
 
 require 'rake'
-require 'rake/rdoctask'
+require 'rake/clean'
 require 'rake/gempackagetask'
+require 'rake/rdoctask'
 require 'rake/testtask'
 
 desc 'Default task (test)'
@@ -33,8 +34,3 @@ Rake::RDocTask.new do |rdoc|
   rdoc.rdoc_files.include( Dir.glob( File.join('test', '*.rb') ) )
 end
 
-desc 'Clean up'
-task :clean do
-  FileUtils.rm( Dir.glob( File.join('pkg', '*') ) )
-  FileUtils.rm_r( Dir.glob( File.join('rdoc', '*') ) )
-end
