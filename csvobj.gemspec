@@ -1,7 +1,7 @@
 
 Gem::Specification.new do |s|
   s.authors = [ 'Martin Carpenter' ]
-  s.date = Time.now.strftime('%Y/%m/%d')
+  s.date = Time.now.strftime('%Y-%m-%d')
   s.description = "CSVobj provides a legible and maintainable mechanism to manipulate CSV files by creating an array of objects from a file or string of CSV information. The resulting object's attributes are defined dynamically and are based on the CSV column name."
   s.email = 'martin.carpenter@gmail.com'
   s.extra_rdoc_files = %w{ LICENSE Rakefile README.rdoc }
