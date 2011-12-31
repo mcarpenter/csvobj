@@ -1,6 +1,19 @@
 
 = CSVobj
 
+== Deprecated
+
+This gem is deprecated. Ruby 1.9 adopted FasterCSV as the new
+standard CSV library and consequently native ruby contains equivalent
+functionality. This gem is therefore no longer being maintained.
+
+Here is the equivalent example from below translated to ruby 1.9 CSV:
+
+    require 'csv'
+
+    csv = CSV.read( ARGV[0], :headers => true )
+    csv.each { |row| puts row['Last Name'] }
+
 == Aims
 
 CSVobj has two simple aims in the processing of CSV files:
